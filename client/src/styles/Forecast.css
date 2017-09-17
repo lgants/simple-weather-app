@@ -1,0 +1,19 @@
+.forecast-card {
+  margin: 20px 0px;
+}
+
+/*.forecast-card .card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}*/
+
+.forecast-card .card-subtitle {
+  margin-bottom: 8px;
+}
+
+.forecast-card img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
