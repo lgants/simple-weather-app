@@ -1,12 +1,32 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+var timestamps = require('mongoose-timestamp');
 
-const forecastSchema = require('./forecastSchema');
+const ForecastSchema = require('./forecast');
 
-const locationSchema = new Schema({
-  zipCode: Number,
-  fetchedAt: Date,
-  forecasts: [forecastSchema],
+const LocationSchema = new Schema({
+  zip: String,
+  city: String,
+  state: String,
+  forecasts: [ForecastSchema]
 });
 
-mongoose.model('Location', locationSchema);
+
+// LocationSchema.query.findOrCreate  = function(conditions) {
+//   // add check to verify conditions is object
+//   this.findOne(conditions)
+//   .then(record => {
+//     if (record) {
+//       return record
+//     } else {
+//       var location = new (this)(conditions);
+//       return location.save();
+//     }
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
+// }
+
+LocationSchema.plugin(timestamps);
+module.exports = mongoose.model('Location', LocationSchema);

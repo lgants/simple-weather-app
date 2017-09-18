@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const forecastSchema = new Schema({
+const ForecastSchema = new Schema({
   epoch: String,
   high: String,
   low: String,
@@ -13,4 +13,5 @@ const forecastSchema = new Schema({
   avehumidity: String
 });
 
-module.exports = forecastSchema;
+module.exports = ForecastSchema;
+// module.exports = mongoose.model('Forecast', ForecastSchema);

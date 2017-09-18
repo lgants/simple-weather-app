@@ -7,6 +7,15 @@ var keys = require('./config/keys');
 // require('./models/Location');
 
 mongoose.connect(keys.mongoURI);
+var db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+db.once("open", function(callback) {
+  console.log("Connection succeeded.");
+});
+
+
 var app = express();
 
 
