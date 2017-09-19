@@ -32,49 +32,50 @@ class App extends Component {
   handleZipSubmit(zip) {
     this.setState({ isLoading: true });
 
-    axios.get(`api/weather/${zip}`)
-      .then(response => {
+    // simulate latency on get
+    setTimeout(function() {
+      axios.get(`api/weather/${zip}`)
+        .then(response => {
 
-        if (isEqual(response.data, {})) {
-          this.setState({
-            forecast: {
-              city: '',
-              state: '',
-              forecastDays: []
-            },
-            error: {
-              hasErrored: true,
-              errorMessage: 'An Error Occurred; Please Try Your Request Again.'
-            },
-            isLoading: false,
-            showZipForm: true
-          });
+          if (isEqual(response.data, {})) {
+            this.setState({
+              forecast: {
+                city: '',
+                state: '',
+                forecastDays: []
+              },
+              error: {
+                hasErrored: true,
+                errorMessage: 'An Error Occurred; Please Try Your Request Again.'
+              },
+              isLoading: false,
+              showZipForm: true
+            });
 
-          throw response.data.error
+            throw response.data.error
 
-        } else {
-          let { city, state, forecasts } = response.data;
+          } else {
+            let { city, state, forecasts } = response.data;
 
-          this.setState({
-            forecast: {
-              city,
-              state,
-              forecastDays: forecasts
-            },
-            error: {
-              hasErrored: false,
-              errorMessage: ''
-            },
-            isLoading: false,
-            showZipForm: false
-          });
-        }
-
-
-      })
-      .catch(err => {
-        console.log(err)
-      })
+            this.setState({
+              forecast: {
+                city,
+                state,
+                forecastDays: forecasts
+              },
+              error: {
+                hasErrored: false,
+                errorMessage: ''
+              },
+              isLoading: false,
+              showZipForm: false
+            });
+          }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }.bind(this), 2000);
   }
 
   handleShowZipForm() {

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Location = require('../models/location');
+var Location = require('../models/Location');
 var getForecast = require('../api/getForecast');
 var getGeolocation = require('../api/getGeolocation');
 

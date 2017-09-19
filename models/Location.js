@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
-var timestamps = require('mongoose-timestamp');
+const timestamps = require('mongoose-timestamp');
 
-const ForecastSchema = require('./forecast');
+const ForecastSchema = require('./Forecast');
 
 const LocationSchema = new Schema({
   zip: String,
