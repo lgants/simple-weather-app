@@ -1,5 +1,4 @@
 var axios = require("axios");
-var keys = require('../config/keys');
 
 
 var getGeolocation = function(zip) {
