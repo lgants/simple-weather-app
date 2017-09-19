@@ -21,6 +21,7 @@ var routes = require('./routes');
 app.use('/api', routes);
 
 app.get('*', (req, res) => {
+  console.log('hit wildcard')
   res.sendFile(path.join(__dirname+'/client/build/index.html'));
 });
 

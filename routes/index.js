@@ -7,6 +7,7 @@ var getGeolocation = require('../api/getGeolocation');
 
 
 router.get('/weather/:zip', function(req, res, next) {
+  console.log('hit api index route')
   let zip = req.params.zip;
 
   Location.findOne({zip: `${zip}`})
