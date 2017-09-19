@@ -2,7 +2,6 @@ var axios = require("axios");
 var keys = require("../config/keys");
 
 var getForecast = function(obj) {
-
   let { state, city } = obj;
 
   return axios.get(`http://api.wunderground.com/api/${keys.API_KEY}/forecast/q` + `/${state}/${city}` + ".json")
