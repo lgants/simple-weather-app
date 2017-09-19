@@ -1,11 +1,10 @@
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
-var Forecast = require('../models/forecast');
-var Location = require('../models/location');
-
-var getForecast = require('../api/getForecast');
-var getGeolocation = require('../api/getGeolocation');
+var Forecast = require('../models/forecast.js');
+var Location = require('../models/location.js');
+var getForecast = require('../api/getForecast.js');
+var getGeolocation = require('../api/getGeolocation.js');
 
 
 router.get('/weather/:zip', function(req, res, next) {
