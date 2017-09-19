@@ -1,4 +1,5 @@
 var express = require('express');
+const path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var keys = require('./config/keys');
@@ -13,12 +14,16 @@ db.once("open", function(callback) {
   console.log("Connection succeeded.");
 });
 
-
 var app = express();
 
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 var routes = require('./routes');
-app.use('/', routes);
+app.use('/api', routes);
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname+'/client/build/index.html'));
+});
 
 
 var PORT = process.env.PORT || 5000;
