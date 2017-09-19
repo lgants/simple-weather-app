@@ -7,11 +7,8 @@
     "npm": "5.3.0"
   },
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "prestart": "npm install",
-    "server": "nodemon app.js -a localhost -p 5000",
-    "client": "npm start --prefix client",
-    "preclient": "npm install --prefix client"
+    "start": "server.js -a localhost -p 5000",
+    "heroku-postbuild": "cd client && yarn --production=false && yarn run build"
   },
   "dependencies": {
     "axios": "^0.16.2",
