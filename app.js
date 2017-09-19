@@ -1,12 +1,10 @@
 var express = require('express');
-// var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var keys = require('./config/keys');
-// require('./models/Forecast');
-// require('./models/Location');
+require('dotenv').config();
 
-mongoose.connect(keys.mongoURI);
+mongoose.connect(process.env.MONGO_URI);
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));

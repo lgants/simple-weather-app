@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Card, CardBlock, Button, Form, FormGroup, Input } from 'reactstrap';
 import '../styles/ZipForm.css';
 
+
 class ZipForm extends Component {
   constructor(props) {
     super();
@@ -19,7 +20,7 @@ class ZipForm extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.handleZipSubmit(this.state.zip)
+    this.props.handleZipSubmit(this.state.zip || null)
   }
 
   render() {

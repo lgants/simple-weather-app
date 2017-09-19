@@ -1,7 +1,8 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
-import '../styles/Loading.css';
 import { Card, CardBlock } from 'reactstrap';
+import '../styles/Loading.css';
+
 
 export default () => {
   return (

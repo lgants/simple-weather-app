@@ -4,6 +4,7 @@ import '../styles/Forecast.css';
 
 import ForecastTile from './ForecastTile'
 
+
 class Forecast extends Component {
   handleClick() {
     this.props.handleShowZipForm()

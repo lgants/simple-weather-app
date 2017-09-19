@@ -3,6 +3,7 @@ import { Card, CardImg, CardTitle, CardText, CardSubtitle, CardBlock } from 'rea
 import Moment from 'react-moment';
 import '../styles/ForecastTile.css';
 
+
 export default (props) => {
   let { avehumidity, avewind_dir, avewind_mph, conditions, epoch, low, high, icon, icon_url } = props.forecastDay;
 

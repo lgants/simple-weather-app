@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-
 var mongoose = require('mongoose');
 var Forecast = require('../models/forecast');
 var Location = require('../models/location');
@@ -19,10 +18,6 @@ router.get('/api/weather/:zip', function(req, res, next) {
       } else {
         return getGeolocation(zip)
           .then(response => {
-
-            // if (!response.data.location) {
-            //   throw response.data.response.error
-            // }
 
             let { city, state, zip } = response.data.location;
 
@@ -53,10 +48,6 @@ router.get('/api/weather/:zip', function(req, res, next) {
       } else {
         return getForecast(locationObj)
           .then(response => {
-
-            // if (!response.data.location) {
-            //   throw response.data.response.error
-            // }
 
             let forecastDays = response.data.forecast.simpleforecast.forecastday.map(function(element, index) {
 
