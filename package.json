@@ -8,10 +8,10 @@
   },
   "scripts": {
     "start": "concurrently \"npm run server\" \"npm run client\"",
-    "preserver": "npm install",
+    "prestart": "npm install",
     "server": "nodemon app.js -a localhost -p 5000",
-    "preclient": "npm install --prefix client",
-    "client": "npm start --prefix client"
+    "client": "npm start --prefix client",
+    "preclient": "npm install --prefix client"
   },
   "dependencies": {
     "axios": "^0.16.2",
