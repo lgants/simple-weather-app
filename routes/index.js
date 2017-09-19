@@ -15,12 +15,15 @@ router.get('/api/weather/:zip', function(req, res, next) {
   Location.findOne({zip: `${zip}`})
     .then(locationObj => {
       if (locationObj) {
-        return locationObj
+        return locationObj;
       } else {
         return getGeolocation(zip)
           .then(response => {
-            // FIXME catch error
-            
+
+            // if (!response.data.location) {
+            //   throw response.data.response.error
+            // }
+
             let { city, state, zip } = response.data.location;
 
             return Location.create({
@@ -29,9 +32,12 @@ router.get('/api/weather/:zip', function(req, res, next) {
               state: state,
               forecasts: [],
             })
-              .then(result => {
-                return result
-              })
+            .then(result => {
+              return result
+            })
+            .catch(err => {
+              console.log(err)
+            })
           })
       }
     })
@@ -47,6 +53,10 @@ router.get('/api/weather/:zip', function(req, res, next) {
       } else {
         return getForecast(locationObj)
           .then(response => {
+
+            // if (!response.data.location) {
+            //   throw response.data.response.error
+            // }
 
             let forecastDays = response.data.forecast.simpleforecast.forecastday.map(function(element, index) {
 
@@ -66,20 +76,25 @@ router.get('/api/weather/:zip', function(req, res, next) {
             });
 
             return Location.findOneAndUpdate(
-              { _id: locationObj.id },
-              { forecasts: forecastDays }
+              {_id: locationObj.id},
+              {$set: {forecasts: forecastDays.slice(0,3)}},
+              {new: true}
             )
               .then(updatedLocationObj => {
                 return updatedLocationObj
               })
               .catch(err => {
-                throw err
+                console.log(err)
               })
           })
       }
     })
     .then(result => {
       res.send(result)
+    })
+    .catch(err => {
+      console.log(err)
+      res.send(err)
     })
 })
 

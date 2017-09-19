@@ -1,36 +1,34 @@
 import React, { Component } from 'react';
-import { Card, CardImg, CardTitle, CardText, CardDeck, CardSubtitle, CardBlock } from 'reactstrap';
-import Moment from 'react-moment';
+import { Card, CardBlock, CardDeck, Button } from 'reactstrap';
 import '../styles/Forecast.css';
 
+import ForecastTile from './ForecastTile'
+
 class Forecast extends Component {
+  handleClick() {
+    this.props.handleShowZipForm()
+  }
+
   render() {
-    let forecasts = this.props.forecast.map(function(element, index) {
-
-      let { icon_url, icon, conditions, high, low, avewind, avehumidity, date } = element;
-
-      return (
-        <Card key={index} className="forecast-card">
-          <CardBlock>
-            <CardTitle>
-              <Moment format="ddd, MMM D">
-                {new Date(parseInt(date.epoch, 10) * 1000)}
-              </Moment>
-            </CardTitle>
-            <CardSubtitle>High: {high.fahrenheit}° F</CardSubtitle>
-            <CardSubtitle>Low: {low.fahrenheit}° F</CardSubtitle>
-            <CardImg src={icon_url} alt={icon}/>
-            <CardText>{conditions}. Winds {avewind.dir} at {avewind.mph} mph. Humidity {avehumidity}%.</CardText>
-          </CardBlock>
-        </Card>
-      );
-    });
+    let { forecast } = this.props;
 
     return (
-      <div>
-        <CardDeck>
-          {forecasts}
-        </CardDeck>
+      <div id="forecast-component">
+        <Card>
+          <CardBlock>
+            <h2>{forecast.city}, {forecast.state}</h2>
+            <CardDeck>
+              {
+                forecast.forecastDays.map(function(forecastDay, index) {
+                  return (
+                    <ForecastTile key={index} forecastDay={forecastDay}/>
+                  )
+                })
+              }
+            </CardDeck>
+            <Button className="btn-primary btn-block" onClick={() => this.handleClick()}>Change Location</Button>
+          </CardBlock>
+        </Card>
       </div>
     )
   }

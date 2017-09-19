@@ -1,0 +1,21 @@
+.forecast-card {
+  margin: 20px 0px;
+}
+
+.forecast-card h6.card-subtitle {
+  margin-bottom: 8px !important;
+}
+
+.forecast-card img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.forecast-card {
+  border: 0;
+}
+
+.forecast-card .card-block {
+  padding: 0px;
+}

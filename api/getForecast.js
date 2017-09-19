@@ -8,9 +8,9 @@ var getForecast = function(obj) {
   return axios.get(`http://api.wunderground.com/api/${keys.WUndergroundKey}/forecast/q` + `/${state}/${city}` + ".json")
     .then(response => {
 
-      // if (response.data.error) {
-      //   throw response.data.error
-      // }
+    if (response.data.error) {
+      throw response.data
+    }
 
       return response;
     }).catch(err => {

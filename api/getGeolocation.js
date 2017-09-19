@@ -8,13 +8,11 @@ var getGeolocation = function(zip) {
     .then(response => {
 
       if (response.data.error) {
-        throw response.data.error
+        throw response.data
       }
 
       return response;
-
     }).catch(err => {
-      // throw error to raise outside
       console.log(err);
     })
 }

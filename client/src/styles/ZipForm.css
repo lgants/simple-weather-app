@@ -1,0 +1,7 @@
+.form-group:last-of-type {
+  margin-bottom: 0px !important;
+}
+
+#zipform-component .alert {
+  text-align: center;
+}
