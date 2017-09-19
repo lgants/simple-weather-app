@@ -1,8 +1,8 @@
 var axios = require("axios");
-
+var keys = require("../config/keys");
 
 var getGeolocation = function(zip) {
-  return axios.get(`http://api.wunderground.com/api/${process.env.API_KEY}/geolookup/q/${zip}` + ".json")
+  return axios.get(`http://api.wunderground.com/api/${keys.API_KEY}/geolookup/q/${zip}` + ".json")
     .then(response => {
 
       if (response.data.error) {
