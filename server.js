@@ -2,8 +2,7 @@ var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-// require('dotenv').config();
-var keys = require("../config/keys");
+var keys = require("./config/keys");
 
 mongoose.connect(keys.MONGO_URI);
 var db = mongoose.connection;
